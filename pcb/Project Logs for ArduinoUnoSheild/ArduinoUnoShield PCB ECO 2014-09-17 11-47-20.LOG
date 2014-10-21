@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=NetC5_1 Pin=TP1-1
+Removed Pin From Net: NetName=NetC3_1 Pin=TP2-1
+Removed Member From Class: ClassName=ArduinoUnoShield Member=TP1
+Removed Member From Class: ClassName=ArduinoUnoShield Member=TP2

@@ -1,0 +1,8 @@
+Added Component: Designator=J1(micro SD)
+Added Pin To Net: NetName=CS Pin=J1-2
+Added Pin To Net: NetName=MOSI0 Pin=J1-3
+Added Pin To Net: NetName=3.3V Pin=J1-4
+Added Pin To Net: NetName=IO13 Pin=J1-5
+Added Pin To Net: NetName=GND Pin=J1-6
+Added Pin To Net: NetName=NetJ1_7 Pin=J1-7
+Added Member To Class: ClassName=ArduinoUnoShield Member=Component J1 MicroSD
