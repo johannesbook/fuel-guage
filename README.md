@@ -17,7 +17,7 @@ Current features
 * No switching series resistors that could interfere with operation, the entire range measured using the same 50 mOhm resistor
 * Data output on serial port to PC showing momentary voltage and current
 
-Ideas to future improvements:
+Ideas to future improvements
 ----
 * Display accumulated energy use (mAh or mWh) since measurement start
 * Time stamped logging to SD-card shield
@@ -28,7 +28,7 @@ Ideas to future improvements:
 All of those are quite easy, I just didn’t find the time yet. 
 
 
-Hardware design description:
+Hardware design description
 ----
 The design is quite straight forward, a low-side current measurement resistor (50 mOhm) being amplified using three separate amplifiers and A/D converters, giving three ranges: 
 * 0 – 500 uA, 500 nA, theoretical resolution on the Arduino 10-bit A/D
@@ -49,8 +49,8 @@ Firmware design description
 ----
 The Arduino Uno samples these four channels every 10 ms (exactly!), chooses the range automatically and outputs the results on a serial port. 
 
-Measured accuracy:
-------------------------
+Measured accuracy
+----
 Note that since three amplifiers are used, the inaccuracy varies across the range – measurements close to the range breaking points are less accurate than other points, which means there is no true general accuracy statement. 
 This is what I measured on the first sample: 
 
