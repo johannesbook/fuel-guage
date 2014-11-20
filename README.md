@@ -19,10 +19,14 @@ Current features
 
 Ideas to future improvements:
 ----
-* Accumulated energy use (mAh or mWh) since measurement start
+* Display accumulated energy use (mAh or mWh) since measurement start
 * Time stamped logging to SD-card shield
 * Output on display shield for standalone operation
+* Make calibration sticky (may not be neccessary to calibrate on every boot) - store in eeprom
+* Increase max voltage range by having a high-impedance divider _before_ the unity-gain OP instead of after. (hits maximum input voltage on the OP; VCC-1,5V)
+
 All of those are quite easy, I just didn’t find the time yet. 
+
 
 Hardware design description:
 ----
