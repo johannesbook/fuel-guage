@@ -37,7 +37,13 @@ The design is quite straight forward, a low-side current measurement resistor (5
 
 Also a fourth channel measures the voltage through a standard voltage divider. See the schematics for the measurement shield for details. 
 
-All amplifiers have a first order low-pass filter (~10 Hz) to even out any spikes higher than the Arduino sample frequency (100 Hz).  The rest should be self-explanatory by looking at the schematics. 
+All amplifiers have a first order low-pass filter (~10 Hz) to even out any spikes higher than the Arduino sample frequency (100 Hz).  
+
+The rest should be self-explanatory by looking at the schematics. 
+
+Hardware revisions
+----
+There are two revisions, where rev A was done in a hurry and had a few quirks, don't use that one. Rev B has the correct schematics but I never made a PCB from that one, it was easier to build rev B using the rev A board, with some patches. 
 
 Firmware design description
 ----
