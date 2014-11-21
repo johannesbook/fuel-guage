@@ -30,7 +30,13 @@ All of those are quite easy, I just didn’t find the time yet.
 
 Hardware design description
 ----
-The design is quite straight forward, a low-side current measurement resistor (50 mOhm) being amplified using three separate amplifiers and A/D converters, giving three ranges: 
+The main difficulty here is to amplify say 1 uA over 50 mOhm (that's 50 nV!) to something measureable with reasonable accuracy. I tried using a low noise, very low offset drift OP (offset can always be calibrated for, but offset drift is terrible), the OPA2335. It actually worked reasonably well! 
+
+Another pitfall was the series resistor (50 mOhm), which on my PCB turned out to be something like 54 mOhm, due to soldering and pad resistance (4 mOhm is about a mm of copper trace in my case). This was a stupid oversight, I should have used a 4-terminal resistor. Instead I just calibrate for the extra 8% in software now, ugly! 
+
+Another thing I didn't consider was that the OP's can have negative offsets, which mine turned out to have, which ment the first part of each range was below zero. I therefor added a tiny positive offset to make sure I'm always on the positive side. 
+
+Apart from this the design is quite straight forward, a low-side current measurement resistor (50 mOhm) being amplified using three separate amplifiers and A/D converters, giving three ranges: 
 * 0 – 500 uA, 500 nA, theoretical resolution on the Arduino 10-bit A/D
 * 500 uA – 20 mA, theoretical resolution 20 uA
 * 20 mA – 1 A, theoretical resolution 2 mA
@@ -39,7 +45,7 @@ Also a fourth channel measures the voltage through a standard voltage divider. S
 
 All amplifiers have a first order low-pass filter (~10 Hz) to even out any spikes higher than the Arduino sample frequency (100 Hz).  
 
-The rest should be self-explanatory by looking at the schematics. 
+The rest should be self-explanatory by looking at the schematics. If not just ask me and I'll clarify. 
 
 Hardware revisions
 ----
