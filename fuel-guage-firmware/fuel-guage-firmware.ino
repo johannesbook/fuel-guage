@@ -1,68 +1,6 @@
 /*
- Johannes Book 2014. 
+ Johannes Book 2014
  Fuel guage tool, made for measuring low currents and count energy, 1uA -> 1A.  
- Initially made for Form (formdevices.com) but also used in other projects. 
- 
- TODO:
- - Calculate energy metering, and test
- - check clock accuracy
- - check when clock overflows
- - Clean up schematics, write documentation and usage instructions, build copys
-
- Future improvements:
- Make calibration sticky (may not be neccessary to make on every boot) - store in eeprom
- Increase max voltage range by having a high-impedance divider _before_ the unity-gain OP instead of after. (hits maximum input voltage on the OP; VCC-1,5V)
- Add display output
- Add SD card storage
- 
- Tests carried out:
- - step response, made sure LP filters on all three ranges has time constant well above the 10 ms sampling rate. 
- - tested that variations in supply voltage does not affect readings
- - accuracy tests (results below)
- 
-****************************
-*   Test on sample #1      *
-****************************
-
-  Multimeter | DUT | Error  
-
-  Range 0:
-    9 uA  |    8 uA  |  <12%
-   13 uA  |   11 uA  |  <16%
-   19 uA  |   17 uA  |  <11%
-   30 uA  |   29 uA  |  <4%
-   46 uA  |   46 uA  |  <1%
-   89 uA  |   89 uA  |  <1%
-  212 uA  |  211 uA  |  <1%
-  252 uA  |  249 uA  |  <2%
-  325 uA  |  320 uA  |  <2%
-  424 uA  |  419 uA  |  <2%
-  
-  Range 1:
-  505 uA  |  516 uA  |  <3%
-  613 uA  |  626 uA  |  <3%
-  917 uA  |  921 uA  |  <1%
-  1197 uA |  1198 uA |  <1%
-  1704 uA |  1714 uA |  <1%
-  11,3 mA |  11,1 mA |  <2%
-
-  Range 2:
-  20,8 mA |  21 mA   |  <1%
-  51,4 mA |  52 mA   |  <2%
-  96,0 mA |  95 mA   |  <2%
-  235 mA  |  233 mA  |  <1%
-  0,53 A  |  514 mA  |  <3%
-  0,71 A  |  697 mA  |  <2%
-  0,88 A  |  873 mA  |  <1%
-  
-  Voltage:
-  285 mV  |   275 mV | <4%
-  1,726 v |  1755 mV | <2%
-  2,327 V |  2375 mV | <1%
-  3,34 V  |  3415 mV | <3%
-  3,60 V  |  3680 mV | <3%
-
-Generally, better than 4% accuracy can be expected in average. Accuracy is worse in the lower area of each range (due to limited resolution), and at some points it might theoretically be slightly worse than 4%.
 
 */
 
