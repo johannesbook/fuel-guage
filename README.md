@@ -1,5 +1,7 @@
-Fuel guage description
+Fuel guage
 ====
+
+![pcb pic](https://github.com/johannesbook/fuel-guage/blob/master/fuel%20guage%20rev%20A.png)
 
 Overview
 ----
@@ -10,6 +12,10 @@ You need to understand how much power your product uses during normal operation 
 resistors in series with your battery, which ruins operation if the device for instance needs to do a radio burst. 
 
 I did this as a simple measurement shield for Arudino Uno, the schematics and layout is in this GitHub repository, together with the Arduino firmware. 
+
+Project status
+---
+Tested and verified rev B of the schematics, works excellent. A lot of improvements remains (see below), but at least first shot is working now. 
 
 Current features
 ----
