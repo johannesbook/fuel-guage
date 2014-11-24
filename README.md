@@ -15,7 +15,7 @@ I did this as a simple measurement shield for Arudino Uno, the schematics and la
 
 Project status
 ---
-Tested and verified rev B of the schematics, works excellent. A lot of improvements remains (see below), but at least first shot is working now. 
+Tested and verified rev B of the schematics, works nicely. A lot of improvements remains (see below), but at least first shot is working now. 
 
 Current features
 ----
@@ -36,9 +36,9 @@ All of those are quite easy, I just didn’t find the time yet.
 
 Hardware design description
 ----
-The main difficulty here is to amplify say 1 uA over 50 mOhm (that's 50 nV!) to something measureable with reasonable accuracy. I tried using a low noise, very low offset drift OP (offset can always be calibrated for, but offset drift is terrible), the OPA2335. It actually worked reasonably well! 
+The main difficulty here is to amplify say 1 uA over 50 mOhm (that's just 50 nV) to something measureable with reasonable accuracy. I tried using a low noise, very low offset drift OP (offset can always be calibrated for, but offset drift is difficult to manage), the OPA2335. It actually worked reasonably well.
 
-Another pitfall was the series resistor (50 mOhm), which on my PCB turned out to be something like 54 mOhm, due to soldering and pad resistance (4 mOhm is about a mm of copper trace in my case). This was a stupid oversight, I should have used a 4-terminal resistor. Instead I just calibrate for the extra 8% in software now, ugly! 
+Another pitfall was the series resistor (50 mOhm), which on my PCB turned out to be something like 54 mOhm, due to soldering and pad resistance (4 mOhm is about a mm of copper trace in my case). This was an oversight by me, I should have used a 4-terminal resistor. Instead I just calibrate for the extra 8% in software now, ugly but works. 
 
 Another thing I didn't consider was that the OP's can have negative offsets, which mine turned out to have, which ment the first part of each range was below zero. I therefor added a tiny positive offset to make sure I'm always on the positive side. 
 
@@ -47,9 +47,9 @@ Apart from this the design is quite straight forward, a low-side current measure
 * 500 uA – 20 mA, theoretical resolution 20 uA
 * 20 mA – 1 A, theoretical resolution 2 mA
 
-Also a fourth channel measures the voltage through a standard voltage divider. See the schematics for the measurement shield for details. 
+Also a fourth channel measures the voltage through a standard voltage divider. See the schematics on the measurement shield for details. 
 
-All amplifiers have a first order low-pass filter (~10 Hz) to even out any spikes higher than the Arduino sample frequency (100 Hz).  
+All amplifiers have a first order low-pass filter (~10 Hz) to average out any spikes higher than the Arduino sample frequency (100 Hz).  This means that the measured data is 100% correct, but it's impossible to measure the voltage of spikes shorter than 10 Hz (100 ms). 
 
 The rest should be self-explanatory by looking at the schematics. If not just ask me and I'll clarify. 
 
@@ -59,7 +59,7 @@ There are two revisions, where rev A was done in a hurry and had a few quirks, d
 
 Firmware design description
 ----
-The Arduino Uno samples these four channels every 10 ms (exactly!), chooses the range automatically and outputs the results on a serial port. 
+The Arduino Uno samples these four channels every 10 ms (exactly!), to make counting energy (mAh) easy. It also chooses the range automatically and outputs the results on a serial port. 
 
 Measured accuracy
 ----
@@ -104,6 +104,8 @@ Voltage:
 3,60 V  |  3680 mV | <3%  
 
 So in general, better than 4% accuracy can be expected in average. Accuracy is worse in the lower area of each range (due to limited resolution), and at some points it might theoretically be worse than 4%.
+
+Accuracy on very low currents is bad, don't know why yet. Could just as well be my reference multimeter, I will double check this when I have a chance. 
 
 Other tests carried out
 ----
